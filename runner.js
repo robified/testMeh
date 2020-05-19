@@ -19,11 +19,11 @@ class Runner {
                 beforeEaches.push(fn);
             };
             // global is a special keyword/variable inside nodeJS that's similar to window variable inside the browser, and will feed the it from the test file.
-            global.it = (description, fn) => {
+            global.it = async (description, fn) => {
                 // console.log(desc);
                 beforeEaches.forEach((func) => func());
                 try {
-                    fn();
+                    await fn();
                     console.log(chalk.green(`\tOK - ${description}`));
                 } catch (error) {
                     // every new line inside the error message, we're going to replace it with a new line, and two tabs.
