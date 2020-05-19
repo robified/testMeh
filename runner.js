@@ -20,10 +20,12 @@ class Runner {
                 beforeEaches.forEach((func) => func());
                 try {
                     fn();
-                    console.log(chalk.green(`OK - ${description}`));
+                    console.log(chalk.green(`\tOK - ${description}`));
                 } catch (error) {
-                    console.log(chalk.red(`X - ${description}`));
-                    console.log(chalk.red('\t', error.message));
+                    // every new line inside the error message, we're going to replace it with a new line, and two tabs.
+                    const message = error.message.replace(/\n/g, '\n\t\t');
+                    console.log(chalk.red(`\tX - ${description}`));
+                    console.log(chalk.red('\t', message));
                 }
             };
             try {
