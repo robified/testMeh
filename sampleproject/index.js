@@ -1,7 +1,7 @@
 module.exports = {
-    forEach(array, func) {
+    forEach(array, fn) {
         for (let element of array) {
-            func(element);
+            fn(element);
         }
     },
 };
