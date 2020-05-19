@@ -24,5 +24,8 @@ it('should rum an array', () => {
 
 // we're writing a test about our testing framework right here, so meta
 it('beforeEach is ran each time', () => {
-    assert.strictEqual(numbers.length, 3);
+    assert.strictEqual(numbers.length, 4);
 });
+
+asdfasdf;
+{}{}}}}

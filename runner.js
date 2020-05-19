@@ -13,12 +13,23 @@ class Runner {
                 beforeEaches.push(fn);
             };
             // global is a special keyword/variable inside nodeJS that's similar to window variable inside the browser, and will feed the it from the test file.
-            global.it = (desc, fn) => {
+            global.it = (description, fn) => {
                 // console.log(desc);
                 beforeEaches.forEach((func) => func());
-                fn();
+                try {
+                    fn();
+                    console.log(`OK - ${description}`);
+                } catch (error) {
+                    console.log(`X - ${description}`);
+                    console.log('\t', error.message);
+                }
             };
-            require(file.name);
+            try {
+                require(file.name);
+            } catch (error) {
+                console.log('X - Error Loading File', file.name);
+                console.log(error);
+            }
         }
     }
 
