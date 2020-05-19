@@ -10,7 +10,12 @@ const render = async (filename) => {
         resources: 'usable',
     });
 
-    return dom;
+    return new Promise((resolve, reject) => {
+        dom.window.document.addEventListener('DOMContentLoaded', () => {
+            // console.log('All done loading!!!');
+            resolve(dom);
+        });
+    });
 };
 
 module.exports = render;
